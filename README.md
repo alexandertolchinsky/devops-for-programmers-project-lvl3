@@ -1,7 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/alexandertolchinsky/devops-for-programmers-project-lvl3/workflows/hexlet-check/badge.svg)](https://github.com/alexandertolchinsky/devops-for-programmers-project-lvl3/actions)
 
-# Deploy Docker images using Ansible
+# Infrastructure as code
 ## Requirements
 - ansible
 - ansible-playbook
@@ -21,7 +21,7 @@ make install-requirements
 ```
 3. Prepare terraform.tfvars file
 ```sh
-cp terraform/terraform.tfvar.example terraform/backend.tf
+cp terraform/terraform.tfvar.example terraform/terraform.tfvar
 ```
 3. Edit terraform.tfvars file
 ```sh
