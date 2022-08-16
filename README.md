@@ -15,31 +15,37 @@
 ```sh 
 git clone https://github.com/alexandertolchinsky/devops-for-programmers-project-lvl3.git
 ```
-2.Edit inventory file
+2. Prepare terraform.tfvars file
 ```sh
-vim inventory.ini
-```
-3. Edit vault-password file
-```sh
-vim vault-password
-```
-4. Edit environment variables
-```sh
-vim group_vars/webservers/all.yml
-make ansible-edit-vault                                             
-```
-5. Prepare terraform.tfvars file
-```sh
-cd ../terraform
 cp terraform/terraform.tfvar.example terraform/terraform.tfvar
 ```
-6. Edit terraform.tfvars file
+3. Edit terraform.tfvars file
 ```sh
 vim terraform/terraform.tfvars
 ```
-7. Edit backend.tf file
+4. Edit backend.tf file
 ```sh
 vim terraform/backend.tf
+```
+5. Setup infrastructure
+```sh
+cd terraform
+make terraform-init
+make terraform-setup
+```
+6.Edit inventory file
+```sh
+cd ../ansible
+vim inventory.ini
+```
+7. Edit vault-password file
+```sh
+vim vault-password
+```
+8. Edit environment variables
+```sh
+vim group_vars/webservers/all.yml
+make ansible-edit-vault                                             
 ``` 
 ## How to run 
 ```sh 
