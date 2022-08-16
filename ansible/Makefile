@@ -1,7 +1,7 @@
 setup:
-	ansible-playbook playbook.yml --tags setup -i hosts --vault-password-file vault-password
+	ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook playbook.yml --tags setup -i hosts --vault-password-file vault-password
 deploy:
-	ansible-playbook playbook.yml --tags deploy -i hosts --vault-password-file vault-password
+	ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook playbook.yml --tags deploy -i hosts --vault-password-file vault-password
 install-requirements:
 	ansible-galaxy install -r requirements.yml
 edit-vault:

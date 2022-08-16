@@ -9,24 +9,12 @@ resource "digitalocean_droplet" "droplets" {
   region   = "ams3"
   size     = "s-1vcpu-1gb"
   ssh_keys = [data.digitalocean_ssh_key.ssh_key_1.fingerprint]
-  provisioner "remote-exec" {
-    inline = ["apt update", "sleep 60"]
-    connection {
-      host  = self.ipv4_address
-      type  = "ssh"
-      user  = "root"
-      agent = true
-    }
-  }
-  provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook -u root -i '${self.ipv4_address},' --private-key ${var.pvt_key} -e 'DATADOG_API_KEY=${var.datadog_api_key}' -e 'REDMINE_DB_POSTGRES=${digitalocean_database_cluster.database_cluster_1.host}' -e 'REDMINE_DB_PORT=${digitalocean_database_cluster.database_cluster_1.port}' -e 'REDMINE_DB_USERNAME=${digitalocean_database_cluster.database_cluster_1.user}' -e 'REDMINE_DB_PASSWORD=${digitalocean_database_cluster.database_cluster_1.password}' -e 'REDMINE_DB_DATABASE=${digitalocean_database_cluster.database_cluster_1.database}'  ../ansible/playbook.yml"
-  }
 }
 
 resource "digitalocean_certificate" "certificate_1" {
   name    = "certificate-1"
   type    = "lets_encrypt"
-  domains = [var.domain_name]
+  domains = [digitalocean_domain.domain_1.name]
 }
 
 resource "digitalocean_loadbalancer" "loadbalancer_1" {

@@ -1,14 +1,17 @@
 - hosts: all
-  pre_tasks:
-    - name: update package cache
-      ansible.builtin.apt:
-        update_cache: true
-      tags: setup
-  roles:
-    - role: geerlingguy.pip
-    - role: datadog.datadog
-  tags: setup
   tasks:
+    - name: setup tasks
+      block:
+        - name: update package cache
+          ansible.builtin.apt:
+            update_cache: true
+        - name: import geerlingguy.pip role
+          ansible.builtin.import_role:
+            name: geerlingguy.pip
+        - name: import datadog.datadog role
+          ansible.builtin.import_role:
+            name: datadog.datadog    
+      tags: setup
     - name: deploy tasks
       tags: deploy
       block:

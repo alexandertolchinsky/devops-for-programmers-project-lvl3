@@ -13,6 +13,6 @@ redmine_db_postgres: database-cluster-1-do-user-11973174-0.b.db.ondigitalocean.c
 redmine_db_port: 25060
 redmine_db_username: doadmin
 redmine_db_password: "{{ vault_redmine_db_password }}"
-redmine_db_database: test
+redmine_db_database: defaultdb
 
 env_file_path: ~/.env

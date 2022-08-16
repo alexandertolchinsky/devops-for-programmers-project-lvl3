@@ -1,0 +1,3 @@
+setup:
+	terraform apply
+
