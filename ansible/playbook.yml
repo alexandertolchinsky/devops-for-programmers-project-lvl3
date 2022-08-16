@@ -4,7 +4,7 @@
       ansible.builtin.apt:
         update_cache: true
       tags: setup
-  roles: 
+  roles:
     - role: geerlingguy.pip
     - role: datadog.datadog
   tags: setup
@@ -24,4 +24,3 @@
             ports:
               - 3000:3000
             env_file: "{{ env_file_path }}"
-   
