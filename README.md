@@ -17,23 +17,34 @@ git clone https://github.com/alexandertolchinsky/devops-for-programmers-project-
 ```
 2. Install requirements
 ```sh
+cd ansible
 make install-requirements
 ```
-3. Prepare terraform.tfvars file
+3.Edit inventory file
 ```sh
+vim inventory.ini
+```
+4. Edit environment variables
+```sh
+vim group_vars/webservers/all.yml
+make edit-vault                                             
+```
+5. Prepare terraform.tfvars file
+```sh
+cd ../terraform
 cp terraform/terraform.tfvar.example terraform/terraform.tfvar
 ```
-3. Edit terraform.tfvars file
+6. Edit terraform.tfvars file
 ```sh
 vim terraform/terraform.tfvars
 ```
-5. Edit backend.tf file
+7. Edit backend.tf file
 ```sh
 vim terraform/backend.tf
 ```
 ## How to run 
 ```sh 
-make deploy
+make run
 ```
 
 ## Contact
