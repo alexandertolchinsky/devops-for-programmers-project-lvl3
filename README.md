@@ -15,19 +15,18 @@
 ```sh 
 git clone https://github.com/alexandertolchinsky/devops-for-programmers-project-lvl3.git
 ```
-2. Install requirements
-```sh
-cd ansible
-make install-requirements
-```
-3.Edit inventory file
+2.Edit inventory file
 ```sh
 vim inventory.ini
+```
+3. Edit vault-password file
+```sh
+vim vault-password
 ```
 4. Edit environment variables
 ```sh
 vim group_vars/webservers/all.yml
-make edit-vault                                             
+make ansible-edit-vault                                             
 ```
 5. Prepare terraform.tfvars file
 ```sh
@@ -41,7 +40,7 @@ vim terraform/terraform.tfvars
 7. Edit backend.tf file
 ```sh
 vim terraform/backend.tf
-```
+``` 
 ## How to run 
 ```sh 
 make run

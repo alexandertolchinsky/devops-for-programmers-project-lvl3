@@ -1,5 +1,5 @@
-init:
+terraform-init:
 	terraform init
-setup:
+terraform-setup:
 	terraform apply
 
