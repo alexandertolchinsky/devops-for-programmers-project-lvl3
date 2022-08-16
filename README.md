@@ -33,7 +33,7 @@ cd terraform
 make terraform-init
 make terraform-setup
 ```
-6.Edit inventory file
+6. Edit inventory file
 ```sh
 cd ../ansible
 vim inventory.ini
