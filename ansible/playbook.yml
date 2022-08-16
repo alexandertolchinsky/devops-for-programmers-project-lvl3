@@ -5,8 +5,7 @@
         update_cache: true
       tags: setup
   roles: 
-    - role: geerlingguy.pip     
-    - role: geerlingguy.docker
+    - role: geerlingguy.pip
     - role: datadog.datadog
   tags: setup
   tasks:
