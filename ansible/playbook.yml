@@ -3,19 +3,26 @@
     - name: update package cache
       ansible.builtin.apt:
         update_cache: true
-  roles:
-    - role: geerlingguy.pip
+      tags: setup
+  roles: 
+    - role: geerlingguy.pip     
+    - role: geerlingguy.docker
     - role: datadog.datadog
+  tags: setup
   tasks:
-    - name: prepare env
-      ansible.builtin.template:
-        src: templates/.env.j2
-        dest: ~/.env
-    - name: deploy
-      community.docker.docker_container:
-        name: redmine
-        image: redmine
-        restart_policy: always
-        ports:
-          - 3000:3000
-        env_file: ~/.env
+    - name: deploy tasks
+      tags: deploy
+      block:
+        - name: prepare env
+          ansible.builtin.template:
+            src: templates/.env.j2
+            dest: "{{ env_file_path }}"
+        - name: deploy
+          community.docker.docker_container:
+            name: redmine
+            image: redmine
+            restart_policy: always
+            ports:
+              - 3000:3000
+            env_file: "{{ env_file_path }}"
+   

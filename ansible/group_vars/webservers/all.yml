@@ -1,0 +1,21 @@
+pip_install_packages:
+  - name: docker
+
+datadog_api_key: "{{ vault_datadog_api_key }}"
+datadog_site: datadoghq.com
+datadog_checks:
+  http_check:
+    init_config:
+    instances:
+      - name: Application health check status
+        url: http://localhost:3000
+        timeout: 5
+        method: GET
+
+redmine_db_postgres: database-cluster-1-do-user-11973174-0.b.db.ondigitalocean.com
+redmine_db_port: 25060
+redmine_db_username: doadmin
+redmine_db_password: "{{ vault_redmine_db_password }}"
+redmine_db_database: test
+
+env_file_path: ~/.env
