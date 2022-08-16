@@ -8,6 +8,7 @@
         - name: import geerlingguy.pip role
           ansible.builtin.import_role:
             name: geerlingguy.pip
+          become: yes
         - name: import datadog.datadog role
           ansible.builtin.import_role:
             name: datadog.datadog    
